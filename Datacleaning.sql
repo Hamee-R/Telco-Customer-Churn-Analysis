@@ -103,30 +103,55 @@ AND TABLE_NAME = 'telco_customer_churn_cleaned';
 #checking row count
 select count(*) from project.telco_customer_churn_cleaned;
 
-#verifying replaced values
+#confirming row count for renamed values 
 SELECT
     SeniorCitizen,
     COUNT(*) AS customer_count
 FROM project.telco_customer_churn_cleaned
 GROUP BY SeniorCitizen;
 
+#checking counts of renamed values
 SELECT
     Contract,
     COUNT(*) AS customer_count
 FROM project.telco_customer_churn_cleaned
 GROUP BY Contract;
 
+#checking completeness of new column values
 SELECT
     TenureGroup,
     COUNT(*) AS customer_count
 FROM project.telco_customer_churn_cleaned
 GROUP BY TenureGroup;
 
+select count(TenureGroup) from project.telco_customer_churn_cleaned;
+
+#checking for substituted values for initial blanks and completeness
 SELECT TotalCharges,
     COUNT(*) AS zero_totalcharges
 FROM project.telco_customer_churn_cleaned
 WHERE tenure = 0
 AND TotalCharges = 0.00;
+
+#checks for duplicate
+select distinct count(customerID) from project.telco_customer_churn_cleaned;
+
+#substituted/renamed columns
+select customerID, SeniorCitizen, Contract, MonthlyCharges, TotalCharges, tenuregroup from project.telco_customer_churn_cleaned;
+
+#Overall churn count and churn rate (%)
+select count(churn) from project.telco_customer_churn_cleaned;
+
+select churn, count(churn) from project.telco_customer_churn_cleaned group by 1;
+
+select churn, count(*) as count_of_churn, round((count(*) * 100)/(select count(*) from project.telco_customer_churn_cleaned),2) as percentage_churn from project.telco_customer_churn_cleaned group by 1;
+
+#churn by gender
+select gender, count(churn) from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
+
+
+
+
 
 
 
