@@ -139,17 +139,6 @@ select distinct count(customerID) from project.telco_customer_churn_cleaned;
 #substituted/renamed columns
 select customerID, SeniorCitizen, Contract, MonthlyCharges, TotalCharges, tenuregroup from project.telco_customer_churn_cleaned;
 
-#Overall churn count and churn rate (%)
-select count(churn) from project.telco_customer_churn_cleaned;
-
-select churn, count(churn) from project.telco_customer_churn_cleaned group by 1;
-
-select churn, count(*) as count_of_churn, round((count(*) * 100)/(select count(*) from project.telco_customer_churn_cleaned),2) as percentage_churn from project.telco_customer_churn_cleaned group by 1;
-
-#churn by gender
-select gender, count(churn) from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
-
-
 
 
 
