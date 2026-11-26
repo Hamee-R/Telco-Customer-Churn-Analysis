@@ -1,4 +1,6 @@
-SELECT
+#checks for null columns
+    
+    SELECT
     COUNT(*) AS total_records,
     SUM(customerID IS NULL OR TRIM(customerID) = '') AS missing_customerID,
     SUM(gender IS NULL OR TRIM(gender) = '') AS missing_gender,
