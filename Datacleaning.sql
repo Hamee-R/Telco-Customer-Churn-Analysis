@@ -1,4 +1,4 @@
-#creating cleaned table
+#creating cleaned table and converting columns to appropriate data types
 CREATE TABLE project.telco_customer_churn_cleaned (
     customerID VARCHAR(20),
     gender VARCHAR(10),
@@ -92,5 +92,41 @@ SELECT
         ELSE NULL
     END
 FROM project.telco_customer_churn;
+
+
+#checking column count
+SELECT COUNT(*) AS total_columns
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_SCHEMA = 'project'
+AND TABLE_NAME = 'telco_customer_churn_cleaned';
+
+#checking row count
+select count(*) from project.telco_customer_churn_cleaned;
+
+#verifying replaced values
+SELECT
+    SeniorCitizen,
+    COUNT(*) AS customer_count
+FROM project.telco_customer_churn_cleaned
+GROUP BY SeniorCitizen;
+
+SELECT
+    Contract,
+    COUNT(*) AS customer_count
+FROM project.telco_customer_churn_cleaned
+GROUP BY Contract;
+
+SELECT
+    TenureGroup,
+    COUNT(*) AS customer_count
+FROM project.telco_customer_churn_cleaned
+GROUP BY TenureGroup;
+
+SELECT TotalCharges,
+    COUNT(*) AS zero_totalcharges
+FROM project.telco_customer_churn_cleaned
+WHERE tenure = 0
+AND TotalCharges = 0.00;
+
 
 
