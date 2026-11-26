@@ -1,4 +1,4 @@
-#creating cleaned table and converting columns to appropriate data types
+#creating cleaned table, adding extra column and converting columns to appropriate data types
 CREATE TABLE project.telco_customer_churn_cleaned (
     customerID VARCHAR(20),
     gender VARCHAR(10),
@@ -24,7 +24,7 @@ CREATE TABLE project.telco_customer_churn_cleaned (
     TenureGroup VARCHAR(15)
 );
 
-#populating table
+#populating table, substituting values
 INSERT INTO project.telco_customer_churn_cleaned (
     customerID,
     gender,
