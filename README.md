@@ -47,3 +47,9 @@ Customer Account: Examination of tenure groups, contract types, paperless billin
 Services: Investigation of churn patterns across phone services, internet subscriptions, online security, online backup, device protection, technical support and streaming services.
 
 The results of the analysis will be used to identify key churn patterns, highlight areas of concern and develop recommendations for improving customer retention.
+
+
+## Checking for empty rows and blanks:
+
+<img width="1351" height="805" alt="image" src="https://github.com/user-attachments/assets/1b03b11e-e6b5-47d2-99d6-1d4d5ddf4b89" />
+
