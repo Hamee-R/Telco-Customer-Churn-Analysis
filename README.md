@@ -65,3 +65,5 @@ The cleaned table uses appropriate data types for each column. Text attributes w
 The cleaning process also included trimming unnecessary spaces, converting SeniorCitizen values from 0/1 to No/Yes, replacing the 11 blank TotalCharges entries with 0.00, creating tenure categories and standardising contract values.
 
 
+
+
