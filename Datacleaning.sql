@@ -1,0 +1,96 @@
+#creating cleaned table
+CREATE TABLE project.telco_customer_churn_cleaned (
+    customerID VARCHAR(20),
+    gender VARCHAR(10),
+    SeniorCitizen VARCHAR(3),
+    Partner VARCHAR(3),
+    Dependents VARCHAR(3),
+    tenure INT,
+    PhoneService VARCHAR(3),
+    MultipleLines VARCHAR(25),
+    InternetService VARCHAR(20),
+    OnlineSecurity VARCHAR(25),
+    OnlineBackup VARCHAR(25),
+    DeviceProtection VARCHAR(25),
+    TechSupport VARCHAR(25),
+    StreamingTV VARCHAR(25),
+    StreamingMovies VARCHAR(25),
+    Contract VARCHAR(15),
+    PaperlessBilling VARCHAR(3),
+    PaymentMethod VARCHAR(40),
+    MonthlyCharges DECIMAL(10,2),
+    TotalCharges DECIMAL(10,2),
+    Churn VARCHAR(3),
+    TenureGroup VARCHAR(15)
+);
+
+#populating table
+INSERT INTO project.telco_customer_churn_cleaned (
+    customerID,
+    gender,
+    SeniorCitizen,
+    Partner,
+    Dependents,
+    tenure,
+    PhoneService,
+    MultipleLines,
+    InternetService,
+    OnlineSecurity,
+    OnlineBackup,
+    DeviceProtection,
+    TechSupport,
+    StreamingTV,
+    StreamingMovies,
+    Contract,
+    PaperlessBilling,
+    PaymentMethod,
+    MonthlyCharges,
+    TotalCharges,
+    Churn,
+    TenureGroup
+)
+SELECT
+    TRIM(customerID),
+    TRIM(gender),
+    CASE
+        WHEN SeniorCitizen = 1 THEN 'Yes'
+        WHEN SeniorCitizen = 0 THEN 'No'
+        ELSE NULL
+    END,
+    TRIM(Partner),
+    TRIM(Dependents),
+    tenure,
+    TRIM(PhoneService),
+    TRIM(MultipleLines),
+    TRIM(InternetService),
+    TRIM(OnlineSecurity),
+    TRIM(OnlineBackup),
+    TRIM(DeviceProtection),
+    TRIM(TechSupport),
+    TRIM(StreamingTV),
+    TRIM(StreamingMovies),
+    CASE
+        WHEN TRIM(Contract) = 'Month-to-month' THEN 'Monthly'
+        WHEN TRIM(Contract) = 'One year' THEN 'Annually'
+        WHEN TRIM(Contract) = 'Two year' THEN 'Biennially'
+        ELSE TRIM(Contract)
+    END,
+    TRIM(PaperlessBilling),
+    TRIM(PaymentMethod),
+    CAST(TRIM(MonthlyCharges) AS DECIMAL(10,2)),
+    CASE
+        WHEN TotalCharges IS NULL
+             OR TRIM(TotalCharges) = ''
+        THEN 0.00
+        ELSE CAST(TRIM(TotalCharges) AS DECIMAL(10,2))
+    END,
+    TRIM(Churn),
+    CASE
+        WHEN tenure BETWEEN 0 AND 12 THEN 'Short'
+        WHEN tenure BETWEEN 13 AND 24 THEN 'Intermediate'
+        WHEN tenure >= 25 THEN 'Long'
+        ELSE NULL
+    END
+FROM project.telco_customer_churn;
+
+
