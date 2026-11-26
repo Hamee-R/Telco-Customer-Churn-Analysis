@@ -53,3 +53,7 @@ The results of the analysis will be used to identify key churn patterns, highlig
 
 <img width="1351" height="805" alt="image" src="https://github.com/user-attachments/assets/1b03b11e-e6b5-47d2-99d6-1d4d5ddf4b89" />
 
+## Checking for duplicates
+<img width="1363" height="801" alt="image" src="https://github.com/user-attachments/assets/122f6b96-d898-4fd8-8c2e-5a4bbd559641" />
+
+
