@@ -3,7 +3,7 @@ select count(churn) from project.telco_customer_churn_cleaned;
 
 select churn, count(churn) from project.telco_customer_churn_cleaned group by 1;
 
-select churn, count(*) as count_of_churn, round((count(*) * 100)/(select count(*) from project.telco_customer_churn_cleaned),2) as percentage_churn from project.telco_customer_churn_cleaned group by 1;
+select churn, count(*) as count_of_churn, round((count(*) * 100)/(select count(*) from project.telco_customer_churn_cleaned),2) as percentage from project.telco_customer_churn_cleaned group by 1;
 
 SELECT COUNT(*) AS total_customers,
        SUM(Churn = 'Yes') AS churned_customers,
