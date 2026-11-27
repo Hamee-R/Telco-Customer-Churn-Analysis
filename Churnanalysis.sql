@@ -13,23 +13,24 @@ SELECT COUNT(*) AS total_customers,
 FROM project.telco_customer_churn_cleaned;
 
 #churn by gender
-select gender, count(churn) from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
+select gender, count(churn) as churn_count from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
 #percentage churn by gender
-select gender, count(churn), round(count(*) * 100/ (select count(*) from project.telco_customer_churn_cleaned where churn = 'Yes' ),2) as churned_gender from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
+select gender, count(churn) as churn_count, round(count(*) * 100/ (select count(*) from project.telco_customer_churn_cleaned where churn = 'Yes' ),2) as churned_gender_percentage from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
 
 #senior citizens churn 
-select SeniorCitizen, count(*) from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
+select SeniorCitizen, count(*) as churn_count from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
 #senior citizens churn percentage
-select SeniorCitizen, count(*) as churned_SeniorCitizen, round((count(*) * 100.0 )/ (select count(*) from project.telco_customer_churn_cleaned where churn = 'yes'), 2) 
-as SeniorCitizen_churned_percentage from project.telco_customer_churn_cleaned where churn = 'yes' group by 1;
-
+select SeniorCitizen, count(*) as churn_count, round((count(*) * 100.0 )/ (select count(*) from project.telco_customer_churn_cleaned where churn = 'yes'), 2) 
+as churned_percentage from project.telco_customer_churn_cleaned where churn = 'yes' group by 1;
 
 #partner churn
-select Partner, count(*) from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
+select Partner, count(*) as churn_count from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
 #partner churn percentage
-select Partner, count(*) as churned_partners, round(count(*) * 100/(select count(*) from project.telco_customer_churn_cleaned where churn = 'yes'),2)
-as partner_churned_percentage from project.telco_customer_churn_cleaned where churn = 'yes' group by 1;
+select Partner, count(*) as churn_count, round(count(*) * 100/(select count(*) from project.telco_customer_churn_cleaned where churn = 'yes'),2)
+as churned_percentage from project.telco_customer_churn_cleaned where churn = 'yes' group by 1;
 
-
-
-
+#Dependents churn
+select Dependents, count(*) as churn_count from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
+#Dependents churn percentage
+select Dependents, count(*) as churn_count, round(count(*) * 100/(select count(*) from project.telco_customer_churn_cleaned where churn = 'yes'),2)
+as churned_percentage from project.telco_customer_churn_cleaned where churn = 'yes' group by 1;
