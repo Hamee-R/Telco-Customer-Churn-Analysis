@@ -12,11 +12,17 @@ FROM project.telco_customer_churn_cleaned;
 
 #churn by gender
 select gender, count(churn) from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
+select gender, count(churn), round(count(*) * 100/ (select count(*) from project.telco_customer_churn_cleaned where churn = 'Yes' ),2) as churned_gender from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
 
-
-#seniorcitizen churn
+#senior citizens churn
 select SeniorCitizen, count(*) from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1;
-select SeniorCitizen, count(*) as churned_customers, round((count(*) * 100.0 )/ (select count(*) from project.telco_customer_churn_cleaned), 2) as SeniorCitizen_churned_percentage from project.telco_customer_churn_cleaned where churn = 'yes' group by 1;
+
+select SeniorCitizen, count(*) as churned_customers, round((count(*) * 100.0 )/ (select count(*) from project.telco_customer_churn_cleaned where churn = 'yes'), 2) 
+as SeniorCitizen_churned_percentage from project.telco_customer_churn_cleaned where churn = 'yes' group by 1;
+
+
+describe project.telco_customer_churn_cleaned;
 
 #partner churn
-select Partner, count(*) as churned_partners,round((count(*) * 100)/(select count(*) from project.telco_customer_churn_cleaned),2) as partner_churned_percentage from project.telco_customer_churn_cleaned where churn = 'Yes' group by 1; 
+select Partner, count(*) as churned_partners, round(count(*) * 100/(select count(*) from project.telco_customer_churn_cleaned where churn = 'yes'),2)
+as partner_churned_percentage from project.telco_customer_churn_cleaned where churn = 'yes' group by 1;
