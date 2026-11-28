@@ -68,3 +68,13 @@ The cleaning process also included trimming unnecessary spaces, converting Senio
 
 <img width="1347" height="856" alt="image" src="https://github.com/user-attachments/assets/23309c9f-f173-494d-b15e-ffc8bced61d7" />
 
+### Validation of the Cleaned Dataset
+
+After the cleaning process, SQL queries were used to validate the resulting table and confirm the number of records and columns.
+
+<img width="1348" height="682" alt="image" src="https://github.com/user-attachments/assets/8dddc543-b888-4342-a56e-9ae3551b1d47" />
+
+
+<img width="1349" height="832" alt="image" src="https://github.com/user-attachments/assets/bbeac4fd-42d7-4279-86ec-f8a0757968cf" />
+
+
