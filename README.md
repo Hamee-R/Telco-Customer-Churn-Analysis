@@ -60,6 +60,8 @@ The results of the analysis will be used to identify key churn patterns, highlig
 
 A separate table, `telco_customer_churn_cleaned`, was created in MySQL to store the cleaned dataset while preserving the original imported table.
 
+The cleaned dataset contains 22 columns: the original 21 attributes and the additional TenureGroup column.
+
 The cleaned table uses appropriate data types for each column. Text attributes were assigned VARCHAR data types, tenure was stored as INT, and MonthlyCharges and TotalCharges were converted to DECIMAL(10,2).
 
 The cleaning process also included trimming unnecessary spaces, converting SeniorCitizen values from 0/1 to No/Yes, replacing the 11 blank TotalCharges entries with 0.00, creating tenure categories and standardising contract values.
