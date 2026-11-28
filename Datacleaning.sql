@@ -94,13 +94,13 @@ SELECT
 FROM project.telco_customer_churn;
 
 
-#checking column count
+#validating column count
 SELECT COUNT(*) AS total_columns
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_SCHEMA = 'project'
 AND TABLE_NAME = 'telco_customer_churn_cleaned';
 
-#checking row count
+#validating row count
 select count(*) from project.telco_customer_churn_cleaned;
 
 #confirming row count for renamed values 
